@@ -1,4 +1,3 @@
-require('dotenv').config()
 import axios from 'axios';
 
 export default async function handler(req, res) {
@@ -8,4 +7,3 @@ export default async function handler(req, res) {
     const response = await axios.get(`https://api.spoonacular.com/recipes/autocomplete?apiKey=${API_KEY}&query=${search}&number=6`);
     res.json(response.data)
 }
-

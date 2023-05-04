@@ -1,5 +1,5 @@
 import Searchbar from "../components/Searchbar"
-import PersonalizedSearch from "@/components/PersonalizedSearch"
+import PersonalizedSearch from "../components/PersonalizedSearch"
 
 export default function Home() {
   return (

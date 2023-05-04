@@ -13,6 +13,9 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'main-img': "url(../img/img1.jpg)"
       },
+      boxShadow: {
+        'card': '10px 10px 5px 0px rgba(237,26,26,1)'
+      }
     },
   },     
   plugins: [],

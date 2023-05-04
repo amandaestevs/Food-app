@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 function PersonalizedSearch() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentSelected, setCurrentSelected] = useState(Array);
+  const router = useRouter();
 
   const optionSelected = (answer) => {
     if (currentSelected.includes(answer)) {
@@ -19,6 +22,7 @@ function PersonalizedSearch() {
   };
 
   const submitPreferences = () => {
+    if(currentSelected.length === 0) return router.push('/recipes')
     const cuisines = currentSelected.filter(elem => questions[0].answers.includes(elem))
     const intolerences = currentSelected.filter(elem => questions[1].answers.includes(elem))
     const diet = currentSelected.filter(elem => questions[2].answers.includes(elem))
@@ -29,7 +33,7 @@ function PersonalizedSearch() {
     const cuisineString = cuisines.join()
     const intolerencesString = intolerences.join()
     const dietString = diet.join()
-    console.log(cuisineString, intolerencesString, dietString)
+    router.push(`recipes/recommended?cuisine=${cuisineString}&intolerences=${intolerencesString}&diet=${dietString}`)
   }
 
   const notSelected =
@@ -78,6 +82,7 @@ function PersonalizedSearch() {
           Next
         </button>
       </div>
+      <Link href={'/recipes'} className="hover:underline text-blue-700">Skip</Link>
     </div>
   );
 }
